@@ -3,15 +3,47 @@ from queue import Queue
 
 class Solution:
 
-    def minJumps(self, arr) -> int:
+    def minJumpsBFS(self, arr) -> int:
         n = len(arr)
-        if n == 1:
-            return 0
-        if arr[0] == arr[n - 1]:
-            return 1
+        value2ids = {}  # value:{id}
+        for i in range(n):
+            if arr[i] in value2ids.keys():
+                value2ids[arr[i]].append(i)
+            else:
+                value2ids[arr[i]] = [i]
 
+        min_steps = [i for i in range(n)]  # max step is n-1
+        que = Queue()
+        que.put((0, 0))  # (id, step)
+        while not que.empty():
+            id, step = que.get()
+            if id == n - 1:
+                return step
+
+            if id - 1 >= 0:
+                if step + 1 < min_steps[id - 1]:
+                    que.put((id - 1, step + 1))
+                    min_steps[id - 1] = step + 1
+            if id + 1 < n:
+                if step + 1 < min_steps[id + 1]:
+                    que.put((id + 1, step + 1))
+                    min_steps[id + 1] = step + 1
+            for j in value2ids[arr[id]]:
+                if j != id:
+                    if step + 1 < min_steps[j]:
+                        que.put((j, step + 1))
+                        min_steps[j] = step + 1
+
+        return min_steps[n - 1]
+
+    def minJumps(self, arr) -> int:
+        if len(arr) == 1:
+            return 0
+
+        # example 1: [7,2,3,4,5,7,7,7]
+        # example 1: [7,2,3,4,5,9,7,7,7,6,8,9]
         new_arr = [arr[0], arr[1]]
-        for i in range(2, n):
+        for i in range(2, len(arr)):
             if arr[i] == arr[i - 1] and arr[i - 1] == arr[i - 2]:
                 continue
             else:
@@ -19,49 +51,42 @@ class Solution:
         arr = new_arr
         n = len(arr)
 
-        same = {}  # value:{id}
-        same_min = {}
-
+        value2ids = {}  # value:{id}
         for i in range(n):
-            if arr[i] in same.keys():
-                same[arr[i]].append(i)
+            if arr[i] in value2ids.keys():
+                value2ids[arr[i]].append(i)
             else:
-                same[arr[i]] = [i]
-                same_min[arr[i]] = n - 1
+                value2ids[arr[i]] = [i]
 
-        ids = [n - 1 for _ in range(n)]
-
-        que = Queue()  # id, step
-        que.put((0, 0))
-
+        min_steps = [n - 1 for _ in range(n)]  # max step is n-1
+        que = Queue()
+        que.put((0, 0))  # (id, step)
         while not que.empty():
-            point = que.get()
-            if point[0] == n - 1:
-                return point[1]
+            id, step = que.get()
+            if id == n - 1:
+                return step
 
-            if point[0] - 1 >= 0:
-                if point[1] + 1 < ids[point[0] - 1] and point[1] + 1 < same_min[arr[point[0] - 1]] + 1:
-                    que.put((point[0] - 1, point[1] + 1))
-                    ids[point[0] - 1] = point[1] + 1
-                    same_min[arr[point[0] - 1]] = point[1] + 2
-            if point[0] + 1 < n:
-                if point[1] + 1 < ids[point[0] + 1] and point[1] + 1 < same_min[arr[point[0] + 1]] + 1:
-                    que.put((point[0] + 1, point[1] + 1))
-                    ids[point[0] + 1] = point[1] + 1
-                    same_min[arr[point[0] + 1]] = point[1] + 2
-            for j in same[arr[point[0]]]:
-                if j != point[0]:
-                    if point[1] + 1 < ids[j]:
-                        que.put((j, point[1] + 1))
-                        ids[j] = point[1] + 1
+            if id - 1 >= 0:
+                if step + 1 < min_steps[id - 1]:
+                    que.put((id - 1, step + 1))
+                    min_steps[id - 1] = step + 1
+            if id + 1 < n:
+                if step + 1 < min_steps[id + 1]:
+                    que.put((id + 1, step + 1))
+                    min_steps[id + 1] = step + 1
+            for j in value2ids[arr[id]]:
+                if j != id:
+                    if step + 1 < min_steps[j]:
+                        que.put((j, step + 1))
+                        min_steps[j] = step + 1
 
-        return ids[n - 1]
+        return min_steps[n - 1]
 
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.minJumps(arr=[100, -23, -23, 404, 100, 23, 23, 23, 3, 404]))
-    print(s.minJumps(arr=[7]))
+    print(s.minJumpsBFS(arr=[100, -23, -23, 404, 100, 23, 23, 23, 3, 404]))
+    print(s.minJumpsBFS(arr=[7]))
     print(s.minJumps(arr=[7, 6, 9, 6, 9, 6, 9, 7]))
     print(s.minJumps(arr=[6, 1, 9]))
     print(s.minJumps(arr=[11, 22, 7, 7, 7, 7, 7, 7, 7, 22, 13]))
