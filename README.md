@@ -15,17 +15,15 @@ LeetCode: **L**et **e**v**e**ryday  **t**o **Code**
 
 ## B站联动视频
 
-[day1](https://www.bilibili.com/video/av86001620/)
-[day2]( https://www.bilibili.com/video/av86186224/)
-[day3](https://www.bilibili.com/video/av86350334/)
-[day4](https://www.bilibili.com/video/av87771280/)
-[day5](https://www.bilibili.com/video/av87774921/)
-......
-
-<iframe src="//player.bilibili.com/player.html?aid=86186224&cid=147312543&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+- [day1](https://www.bilibili.com/video/av86001620/)
+- [day2]( https://www.bilibili.com/video/av86186224/)
+- [day3](https://www.bilibili.com/video/av86350334/)
+- [day4](https://www.bilibili.com/video/av87771280/)
+- [day5](https://www.bilibili.com/video/av87774921/)
 
 
 ## Todo
+
 - [x] 并查集
 - [x] 双指针
 - [x] 位运算
@@ -33,4 +31,5 @@ LeetCode: **L**et **e**v**e**ryday  **t**o **Code**
 - [ ] 动态规划
 - [ ] 二分法
 - [ ] 图论相关
+- [x] 贪心算法
 
