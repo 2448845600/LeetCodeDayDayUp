@@ -21,7 +21,7 @@ LeetCode: **L**et **e**v**e**ryday  **t**o **Code**
 - [day4](https://www.bilibili.com/video/av87771280/)
 - [day5](https://www.bilibili.com/video/av87774921/)
 
-![](./我的频道.png)
+![](.\我的频道.png)
 
 ## Todo
 
