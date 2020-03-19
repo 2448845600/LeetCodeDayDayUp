@@ -21,7 +21,7 @@ LeetCode: **L**et **e**v**e**ryday  **t**o **Code**
 - [day4](https://www.bilibili.com/video/av87771280/)
 - [day5](https://www.bilibili.com/video/av87774921/)
 
-![](.\show_time.png)
+![](show_time.png)
 
 ## Todo
 
@@ -29,7 +29,7 @@ LeetCode: **L**et **e**v**e**ryday  **t**o **Code**
 - [x] 双指针
 - [x] 位运算
 - [x] 搜索
-- [ ] 动态规划
+- [x] 动态规划
 - [ ] 二分法
 - [ ] 图论相关
 - [x] 贪心算法
