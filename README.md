@@ -21,7 +21,9 @@ LeetCode: **L**et **e**v**e**ryday  **t**o **Code**
 - [day4](https://www.bilibili.com/video/av87771280/)
 - [day5](https://www.bilibili.com/video/av87774921/)
 
-![](show_time.png)
+<div align="center">
+  <img src="https://github.com/2448845600/LeetCodeDayDayUp/blob/master/show_time.png" width="900px" />
+</div>
 
 ## Todo
 
